@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+body { font-family: San Francisco, PingFang SC, Hiragino Sans GB, Segoe UI, Microsoft Yahei, 微软雅黑, Tahoma, Arial, sans-serif;}
+body,html { margin: 0; padding: 0;}
+button,dd,div,dl,dt,form,img,input,li,ol,p,td,th,ul { margin: 0; padding: 0; border: 0;}
+article,aside,figcaption,figure,footer,header,nav,section,summary{display:block}
+li { list-style-type: none;}
+img { vertical-align: top;}
+h1,h2,h3,h4,h5,h6 { margin: 0; padding: 0; font-weight: 500;}
+input, select, textarea { font-family: San Francisco, PingFang SC, Hiragino Sans GB, Segoe UI, Microsoft Yahei, 微软雅黑, Tahoma, Arial, sans-serif;}
+input { vertical-align: middle; outline: 0;}
+table { border-collapse: collapse; border-spacing: 0;}
+select { background: none; border: none; appearance: none;}
+a { cursor: pointer; outline: 0;}
+a:hover,a:link,a:visited { text-decoration: none;}
+
+.clearfix { display: inline-table; display: block; zoom:1}
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden;}

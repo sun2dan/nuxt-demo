@@ -1,4 +1,3 @@
-
 module.exports = {
   mode: 'universal',
   /*
@@ -7,38 +6,47 @@ module.exports = {
   head: {
     title: process.env.npm_package_name || '',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {hid: 'description', name: 'description', content: process.env.npm_package_description || ''}
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
     ]
   },
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: {color: '#fff'},
   /*
   ** Global CSS
   */
-  css: [
-  ],
+  css: [],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    'assets/style/_reset.scss',
+    'assets/style/_common.scss',
   ],
+  
+  /*
+  ** Nuxt.js modules
+  */
+  modules: [],
+  
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxtjs/style-resources'
   ],
-  /*
-  ** Nuxt.js modules
-  */
-  modules: [
-  ],
+  
+  // https://zh.nuxtjs.org/api/configuration-build/#styleresources
+  // 引用全局scss变量
+  styleResources: {
+    scss: ['./assets/style/_var.scss',]
+  },
   /*
   ** Build configuration
   */
@@ -46,7 +54,8 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
+    
     }
   }
 }

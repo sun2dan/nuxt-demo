@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+.w100 {width: 100%;}
+.pr {position: relative;}
+.fix-lt {position: fixed; left: 0;top: 0; }
+.main-box {position: relative; width: 1200px; margin: 0 auto;}
+
+body {line-height: 1;}
+h2 {font-size: 36px;}
+
+.layout {}
+.page-box {min-width: 1200px; min-height: 1400px; margin-top: 70px;}
+// 页面楼层
+.floor {min-height: 500px; padding: 20px 0 0 0; box-sizing: border-box;}

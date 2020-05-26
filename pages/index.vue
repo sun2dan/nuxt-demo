@@ -1,72 +1,44 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        nuxt-demo
-      </h1>
-      <h2 class="subtitle">
-        
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div class="page-index">
+    <div class="floor f-banner">
+      <div class="main-box">
+        <h2>banner楼层</h2>
+      </div>
+    </div>
+    <div class="floor f-tab">
+      <div class="main-box">
+        <h2>Tab切换楼层</h2>
+      </div>
+    </div>
+    <div class="floor f-news">
+      <div class="main-box">
+        <h2>新闻楼层</h2>
       </div>
     </div>
   </div>
 </template>
-
 <script>
-import Logo from '~/components/Logo.vue'
+  import tkd from "assets/data/tkd";
 
-export default {
-  components: {
-    Logo
+  export default {
+    name: '',
+    props: {},
+    layout: 'default',
+    head: tkd.index,
+    data() {
+      return {}
+    },
+    created() {
+    },
+    methods: {},
+    computed: {},
+    components: {}
   }
-}
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
+<style rel="stylesheet/scss" lang="scss" type="text/scss">
+  .page-index {
+    .f-banner {color: $f; background: #FFB200;}
+    .f-tab {background: #E4E4E4;}
+    .f-news {color: $f; background: $main;}
+  }
 </style>
