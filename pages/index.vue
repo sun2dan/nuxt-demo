@@ -49,10 +49,13 @@
       }
     },
     async asyncData() {
-
+      let res1 = await pageAxios.get("news/recommend", {params: {}});
+      let code = res1.code;
+      let recmdList = res1.data;
+      return {recmdList};
     },
     created() {
-      this.getNews();
+      // this.getNews();
     },
     methods: {
       async getNews() {
