@@ -1,6 +1,7 @@
 const Koa = require('koa')
 const consola = require('consola')
-const { Nuxt, Builder } = require('nuxt')
+const {Nuxt, Builder} = require('nuxt')
+const serverAxios = require('./serverAxios');
 
 const app = new Koa()
 
@@ -8,7 +9,7 @@ const app = new Koa()
 const config = require('../nuxt.config.js')
 config.dev = app.env !== 'production'
 
-async function start () {
+async function start() {
   // Instantiate nuxt.js
   const nuxt = new Nuxt(config)
 
@@ -24,7 +25,16 @@ async function start () {
     await builder.build()
   }
 
-  app.use((ctx) => {
+  app.use(async (ctx) => {
+    let url = ctx.request.url;
+
+    if (/\/proxy\//gmi.test(url)) {  // 需要本机代理的ajax接口，来源：页面ajax异步调用
+      let link = url.replace(/\/proxy/gmi, '');
+      let res = await serverAxios.get(link);
+      ctx.response.body = res.data;
+      return;
+    }
+
     ctx.status = 200
     ctx.respond = false // Bypass Koa's built-in response handling
     ctx.req.ctx = ctx // This might be useful later on, e.g. in nuxtServerInit or with nuxt-stash
@@ -32,6 +42,7 @@ async function start () {
   })
 
   app.listen(port, host)
+
   consola.ready({
     message: `Server listening on http://${host}:${port}`,
     badge: true

@@ -5,17 +5,24 @@
  * e-mail: supericesun@gmail.com
  */
 
+const serverAxios = require('../../server/serverAxios');
 const axios = require('axios');
-const BASEURL = 'https://www.fastmock.site/mock/26c97e7a6aaac3d8e356c15412b5abc3/api/';
+const BASEURL = '/proxy/';  // 所有node代理的接口前都加一个 /proxy/
 
 // 创建axios对象
-let instance = axios.create({
+let instance = null;
+
+if (process.client) {  // 当前环境是浏览器，页面发送ajax请求
+  instance = axios.create({
     baseURL: BASEURL,
-    timeout: 10000,
+    timeout: 300000,
     headers: {
       Accept: 'application/json',
     },
   });
+} else {   // 放到asyncData中的请求，node自动转发，所以要用node处理
+  instance = serverAxios;
+}
 
 // 添加请求拦截器
 instance.interceptors.request.use(
