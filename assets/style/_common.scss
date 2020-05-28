@@ -8,7 +8,9 @@
 .fl {float: left;}
 .fr {float: right;}
 .fix-lt {position: fixed; left: 0;top: 0; }
+.abs-rt {position: absolute; right: 0; top: 0;}
 .abs-mm {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+.abs-rm {position: absolute; right: 0; top: 50%; transform: translate(0, -50%);}
 .ellips {white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 
 body {line-height: 1; font-size: 14px; color: $main;}
@@ -18,7 +20,16 @@ h2 {font-size: 36px;}
 .main-box {position: relative; width: 1200px; margin: 0 auto;}
 .page-box {min-width: 1200px; min-height: 1400px; margin-top: 70px;}
 // 页面楼层
-.floor {min-height: 500px; padding: 20px 0 0 0; box-sizing: border-box;}
+.floor {min-height: 500px; padding: 30px 0 0 0; box-sizing: border-box;}
 .img-box {position: relative;
   img {max-width: 100%; max-height: 100%;}
+}
+// --------------- 按钮 ---------------
+.btn, .btn-f {padding: 0 20px; height: 40px; line-height: 40px; white-space: nowrap; color: $main; border: 1px solid $border; transition: all ease $time;
+}
+.btn {
+  &:hover {color: $mainActive; background-color: rgba($main, .1);}
+}
+.btn-f {color: $mainF; border-color: $borderF;
+  &:hover {color: $f; background-color: rgba($f, .1);}
 }

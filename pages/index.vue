@@ -13,7 +13,10 @@
     </div>
     <div class="floor f-news">
       <div class="main-box">
-        <h2>新闻楼层</h2>
+        <div class="pr">
+          <h2>新闻楼层</h2>
+          <nuxt-link to="/news" class="btn-f abs-rm">查看更多</nuxt-link>
+        </div>
         <ul class="flex">
           <li class="flex-1" v-for="(item,i) in recmdList">
             <div class="img-box">
@@ -32,6 +35,7 @@
 </template>
 <script>
   import tkd from "assets/data/tkd";
+  import pageAxios from 'assets/utils/pageAxios'
 
   export default {
     name: '',
