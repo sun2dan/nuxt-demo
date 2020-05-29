@@ -25,4 +25,5 @@
   }
 </script>
 <style rel="stylesheet/scss" lang="scss" type="text/scss">
+  .layout {min-width: 1200px;}
 </style>

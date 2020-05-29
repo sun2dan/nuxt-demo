@@ -29,19 +29,23 @@ module.exports = {
     'assets/style/_reset.scss',
     'assets/style/_common.scss',
   ],
-  
+
   /*
   ** Nuxt.js modules
   */
   modules: [],
-  
+
+  serverMiddleware: [
+    {path: '/proxy', handler: '@/server/proxy.js'},
+  ],
+
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
     '@nuxtjs/style-resources'
   ],
-  
+
   // https://zh.nuxtjs.org/api/configuration-build/#styleresources
   // 引用全局scss变量
   styleResources: {
@@ -55,7 +59,7 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-    
+
     }
   }
 }
