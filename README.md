@@ -34,9 +34,11 @@
 
 ### 0.注意
 实际的项目不知道哪里配置有问题，build、start 运行之后会出现一些奇怪的问题，找了好久也没找到原因，包括：
+
 - "1.node代理/转发接口"，将监听路由的代码放到server/index.js中的方案，build之后start运行，代码不执行；最终采用了方案2：serverMiddleware方案
 - "3.添加定时任务"，第一个方案，在 server/index.js 中引用定时任务，build之后start运行，代码不执行，最终采用了方案2：将定时任务放到nuxt.config.js中引用；
 
+最终判定一个方案能不能用，是以build之后start运行正常来判定的；
 
 ## 接口
 
