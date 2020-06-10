@@ -67,7 +67,7 @@
       },
       // 本地测试 跨域问题
       async getCont() {
-        let res1 = await pageAxios.get("http://test.jd.com:8092", {params: {}});
+        let res1 = await pageAxios.get("http://test.com:8092", {params: {}});
         let code = res1.code;
         let data = res1.data;
         console.log('cont', res1, code, data);
