@@ -1,3 +1,5 @@
+const task = require('./server/task');
+
 module.exports = {
   mode: 'universal',
   /*
