@@ -13,6 +13,15 @@
 3. [@nuxtjs/proxy](https://www.npmjs.com/package/@nuxtjs/proxy)方案，但只能做单纯的转发，解决跨域问题，不能实现带token请求的复杂逻辑   
 
 
+### 2. 请求接口需要带token
+#### 使用场景
+请求每个业务接口的时候，都需要带着token，以此来验证身份，token由一个提前分配好的key来生成；
+
+#### 设计思路
+用node发请求，token和时间戳作为一个变量来存储；
+
+
+
 
 ## 接口
 
