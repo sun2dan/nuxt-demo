@@ -18,15 +18,16 @@
           <nuxt-link to="/news" class="btn-f abs-rm">查看更多</nuxt-link>
         </div>
         <ul class="flex">
-          <li class="flex-1" v-for="(item,i) in recmdList">
+          <li class="flex-1" :key="item.id" :tid="item.id" v-for="(item,i) in recmdList">
             <div class="img-box">
               <img :src="item.img" class="abs-mm" alt="">
             </div>
-            <div class="info-box flex">
+            <div class="news-info flex">
               <span>{{item.origin}}</span>
               <span>{{item.publishTime}}</span>
             </div>
             <h4 class="ellips">{{item.title}}</h4>
+            <nuxt-link class="abs-lt full z10" :to="`/news/${item.id}`"></nuxt-link>
           </li>
         </ul>
       </div>
@@ -84,13 +85,8 @@
     .f-tab {background: #E4E4E4;}
     .f-news {color: $f; background: $main;
       ul {margin-top: 30px;}
-      li {width: 370px; margin-right: 45px;}
+      li {position: relative; width: 370px; margin-right: 45px;}
       .img-box {height: 200px; }
-      .info-box {margin: 15px 0 10px; color: $minorF;
-        span:last-of-type {position: relative; margin-left: 10px; padding-left: 10px;
-          &:before {content: ''; position: absolute; left: -1px; top: 0; bottom: 0; width: 2px; background-color: $borderF;}
-        }
-      }
       h4 {font-size: 18px; line-height: 1.5;}
     }
   }
