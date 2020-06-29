@@ -32,6 +32,23 @@ module.exports = {
     'assets/style/_common.scss',
   ],
 
+  // 静态页面发布 - generate 生成静态文件配置
+  generate: {
+    routes: function () {
+      /**
+       * generate 纯静态发布时，动态参数不会生成对应的页面，如果直接访问页面（或刷新页面）就报404了
+       * 所以需要在这里配置强制将对应的动态页面生成出来；
+       * 比如该项目中的新闻，/news/:id 中，直接访问 /news/1 就会404，因为这个页面默认是动态生成的，实际没有对应的静态页面；
+       */
+      let arr = [];
+      for (let i = 0, len = 3; i < len; i++) {
+        arr.push(`/news/${i + 1}`);
+      }
+
+      return arr;
+    }
+  },
+
   /*
   ** Nuxt.js modules
   */
