@@ -32,6 +32,11 @@ module.exports = {
     'assets/style/_common.scss',
   ],
 
+  // 静态资源路径
+  router: {
+    base: process.env.NODE_ENV === 'xxx' ? '/html/nuxt-demo/' : '/'
+  },
+
   // 静态页面发布 - generate 生成静态文件配置
   generate: {
     routes: function () {

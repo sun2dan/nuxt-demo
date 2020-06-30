@@ -15,6 +15,7 @@ async function sendSiteMap() {
   let urls = getUrlsFromSiteMap();
   fs.writeFileSync(require('path').join(__dirname, 'logs.txt'), urls.join('\n'));
 
+  return;  // 不执行真正的发送操作，因为没有该接口，会报错
   let res = await axios.post(path, urls.join('\n'), {headers: headers});
   let status = res.status;
   let data = res.data;

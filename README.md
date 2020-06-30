@@ -41,13 +41,36 @@ generate 纯静态发布时，动态参数不会生成对应的页面，如果�
 在 nuxt.config.js -- generate.routes 中进行配置；
 
 
+### 5.最终发布不在根目录下
+#### 使用场景
+generate 之后的静态页面，最终发布的时候不在根目录下；<br>
+比如想发布到 http://ashita.top/html/nuxt-demo/ 下，默认 generate 出来的页面，静态资源默认路径都是 /_nuxt/，实际的资源路径应该是 /html/nuxt-demo/_nuxt/。
+
+### 解决方案
+nuxt.config.js 中的 router.base 可以自定义配置静态资源路径，但是改了之后 dev 就访问不到页面了；
+所以要做一个区分，generate 命令用自定义的路径，其他命令保持默认的 /；具体操作如下：
+1. 在 package.json 中改造 generate 命令： <br>
+    ```
+    "generate": "cross-env NODE_ENV=xxx nuxt generate"
+    ```
+    xxx 就是一个标识字符串，用来做判断；
+2. nuxt.config.js 中，router 改为下面的代码：
+    ```
+    router: {
+      base: process.env.NODE_ENV === 'xxx' ? '/html/nuxt-demo/' : '/'
+    },
+    ```
+
+详细说明和解释可参照[NuxtJS 问题汇总](http://ashita.top/front/nuxtjs.html)中的第3条；
+
+
 ### 0.注意
 实际的项目不知道哪里配置有问题，build、start 运行之后会出现一些奇怪的问题，找了好久也没找到原因，包括：
 
 - "1.node代理/转发接口"，将监听路由的代码放到server/index.js中的方案，build之后start运行，代码不执行；最终采用了方案2：serverMiddleware方案
 - "3.添加定时任务"，第一个方案，在 server/index.js 中引用定时任务，build之后start运行，代码不执行，最终采用了方案2：将定时任务放到nuxt.config.js中引用；
 
-最终判定一个方案能不能用，是以build之后start运行正常来判定的；
+一个方案能不能用，是以build之后start运行正常来判定的；
 
 ## 接口
 
