@@ -9,7 +9,7 @@ const axios = require('axios');
 const BASEURL = 'https://www.fastmock.site/mock/26c97e7a6aaac3d8e356c15412b5abc3/api/';
 
 // 全局token信息
-let GLOBAL_TOKEN = {
+process.GLOBAL_TOKEN = process.GLOBAL_TOKEN || {
   token: '',
   time: 0  // 时间戳
 };
@@ -51,7 +51,7 @@ instance.interceptors.response.use(
 // 获取token
 async function getToken() {
   let ts = new Date().getTime();
-  let tokenInfo = GLOBAL_TOKEN;
+  let tokenInfo = process.GLOBAL_TOKEN;
   let TOKEN_URL = BASEURL + 'getToken';
 
   // 有值并且未过期
@@ -63,8 +63,8 @@ async function getToken() {
       if (res.status !== 200) reject(res);
 
       let token = res.data.data;
-      GLOBAL_TOKEN.token = token;
-      GLOBAL_TOKEN.time = new Date().getTime();
+      process.GLOBAL_TOKEN.token = token;
+      process.GLOBAL_TOKEN.time = new Date().getTime();
       resolve(token);
 
     }).catch(err => {
