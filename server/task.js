@@ -13,7 +13,7 @@ const path = 'http://data.zz.baidu.com/urls?site=https://ashita.top&token=123456
 async function sendSiteMap() {
   let headers = {'content-type': 'text/plain'};
   let urls = getUrlsFromSiteMap();
-  fs.writeFileSync(require('path').join(__dirname, 'logs.txt'), urls.join('\n'));
+  fs.writeFileSync(require('path').join(__dirname, 'sitemap.log'), urls.join('\n'));
 
   return;  // 不执行真正的发送操作，因为没有该接口，会报错
   let res = await axios.post(path, urls.join('\n'), {headers: headers});
