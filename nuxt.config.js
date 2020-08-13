@@ -1,7 +1,17 @@
-const task = require('./server/task');
+// 获取最后一项，当做参数，.concat一个空数组是为了不改变 process.argv
+const args = process.argv.concat([]).pop();
+// 是否为发布到服务器的版本
+const isRemote = args === '-xxx';
 
 module.exports = {
   mode: 'universal',
+
+  // 全局变量，客户端、服务端都能访问到
+  env: {
+    args: args,
+    isRemote: isRemote,
+  },
+
   /*
   ** Headers of the page
   */
@@ -34,7 +44,7 @@ module.exports = {
 
   // 静态资源路径
   router: {
-    base: process.env.NODE_ENV === 'xxx' ? '/html/nuxt-demo/' : '/'
+    base: isRemote ? '/html/nuxt-demo/' : '/'
   },
 
   // 静态页面发布 - generate 生成静态文件配置

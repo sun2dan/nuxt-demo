@@ -51,13 +51,13 @@ nuxt.config.js 中的 router.base 可以自定义配置静态资源路径，但�
 所以要做一个区分，generate 命令用自定义的路径，其他命令保持默认的 /；具体操作如下：
 1. 在 package.json 中改造 generate 命令： <br>
     ```
-    "generate": "cross-env NODE_ENV=xxx nuxt generate"
+    "generate": "nuxt generate -xxx"
     ```
-    xxx 就是一个标识字符串，用来做判断；
+    -xxx 就是一个标识字符串，用来做判断，这个字符串会作为一个参数传入到程序中；
 2. nuxt.config.js 中，router 改为下面的代码：
     ```
     router: {
-      base: process.env.NODE_ENV === 'xxx' ? '/html/nuxt-demo/' : '/'
+      base: process.argv.concat([]).pop() === '-xxx' ? '/html/nuxt-demo/' : '/'
     },
     ```
 
