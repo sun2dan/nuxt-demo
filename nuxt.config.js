@@ -1,3 +1,6 @@
+// 定时任务
+const task = require('./server/task');
+
 // 获取最后一项，当做参数，.concat一个空数组是为了不改变 process.argv
 const args = process.argv.concat([]).pop();
 // 是否为发布到服务器的版本
