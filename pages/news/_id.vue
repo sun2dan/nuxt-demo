@@ -46,7 +46,7 @@
     .news-info {color: $minor;}
     .cont {padding-top: 10px; line-height: 1.4; font-size: 16px;
       p {margin-bottom: 15px;}
-      img {display: block; margin: 0 auto;}
+      img {display: block; max-width: 1200px; margin: 0 auto;}
     }
   }
 </style>
